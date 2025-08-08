@@ -7,28 +7,76 @@ Never try to install this package, it is over 1.5 GB. Only ever work with the ra
 
 The project directory has the following structure:
 
-(.venv) PS C:\dev\huginn> pckgr tree
 huginn/
 ├─ src/
-│  └─ huginn/
-│     ├─ aiAssistant/
-│     │  ├─ __init__.py
-│     │  ├─ assistant.py
-│     │  └─ systemDiagnostics.py
-│     ├─ __init__.py
-│     ├─ __main__.py
-│     ├─ cli.py
-│     └─ dataTypes.py
+│  ├─ docs/
+│  │  ├─ api.md
+│  │  └─ architecture.md
+│  ├─ examples/
+│  │  └─ minimalTextGen.py
+│  ├─ huginn/
+│  │  ├─ aiAssistant/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ assistant.py
+│  │  │  └─ systemDiagnostics.py
+│  │  ├─ c/
+│  │  │  ├─ __init__.py
+│  │  │  └─ meson.build
+│  │  ├─ config/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ defaults.toml
+│  │  │  └─ schema.json
+│  │  ├─ cython/
+│  │  │  ├─ __init__.py
+│  │  │  └─ setupCython.py
+│  │  ├─ integration/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ grendelClient.py
+│  │  │  └─ modelRegistry.py
+│  │  ├─ ipc/
+│  │  │  ├─ __init__.py
+│  │  │  └─ messages.py
+│  │  ├─ observability/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ logging.py
+│  │  │  └─ metrics.py
+│  │  ├─ orchestrator/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ executionEngine.py
+│  │  │  └─ jobManager.py
+│  │  ├─ planner/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ costModel.py
+│  │  │  ├─ partitioner.py
+│  │  │  └─ planGraph.py
+│  │  ├─ quantization/
+│  │  │  ├─ __init__.py
+│  │  │  └─ loadQuantizer.py
+│  │  ├─ runtime/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ onnxAdapter.py
+│  │  │  └─ torchAdapter.py
+│  │  ├─ scheduling/
+│  │  │  ├─ __init__.py
+│  │  │  └─ policy.py
+│  │  ├─ sdk/
+│  │  │  ├─ __init__.py
+│  │  │  └─ client.py
+│  │  ├─ weights/
+│  │  │  ├─ __init__.py
+│  │  │  ├─ cache.py
+│  │  │  └─ downloader.py
+│  │  ├─ __init__.py
+│  │  ├─ __main__.py
+│  │  ├─ cli.py
+│  │  └─ dataTypes.py
+│  └─ scripts/
+│     ├─ dev.ps1
+│     └─ dev.sh
 ├─ AGENTS.md
 ├─ CHANGELOG.md
+├─ huginn
 ├─ LICENSE
 ├─ pyproject.toml
 ├─ README.md
 └─ setup.py
-
-Address the following from the run:
-
-Since we now support fast AND slow tokenisers, it makes sense to add these as well in their own catagory.
-
-Test failed:
-    Passed `tokenizer_type` GemmaTokenizer does not exist. `tokenizer_type` should be one of aimv2, albert, align, arcee, aria, aya_vision, bark, bart, barthez, bartpho, bert, bert-generation, bert-japanese, bertweet, big_bird, bigbird_pegasus, biogpt, bitnet, blenderbot, blenderbot-small, blip, blip-2, bloom, bridgetower, bros, byt5, camembert, canine, chameleon, chinese_clip, clap, clip, clipseg, clvp, code_llama, codegen, cohere, cohere2, colpali, colqwen2, convbert, cpm, cpmant, ctrl, data2vec-audio, data2vec-text, dbrx, deberta, deberta-v2, deepseek_v2, deepseek_v3, deepseek_vl, deepseek_vl_hybrid, dia, diffllama, distilbert, dpr, electra, emu3, ernie, ernie4_5, ernie4_5_moe, ernie_m, esm, exaone4, falcon, falcon_mamba, fastspeech2_conformer, flaubert, fnet, fsmt, funnel, gemma, gemma2, gemma3, gemma3_text, gemma3n, gemma3n_text, git, glm, glm4, glm4_moe, glm4v, gpt-sw3, gpt2, gpt_bigcode, gpt_neo, gpt_neox, gpt_neox_japanese, gpt_oss, gptj, gptsan-japanese, granite, granitemoe, granitemoehybrid, granitemoeshared, grounding-dino, groupvit, helium, herbert, hubert, ibert, idefics, idefics2, idefics3, instructblip, instructblipvideo, internvl, jamba, janus, jetmoe, jukebox, kosmos-2, layoutlm, layoutlmv2, layoutlmv3, layoutxlm, led, lilt, llama, llama4, llama4_text, llava, llava_next, llava_next_video, llava_onevision, longformer, longt5, luke, lxmert, m2m_100, mamba, mamba2, marian, mbart, mbart50, mega, megatron-bert, mgp-str, minimax, mistral, mixtral, mllama, mluke, mm-grounding-dino, mobilebert, modernbert, moonshine, moshi, mpnet, mpt, mra, mt5, musicgen, musicgen_melody, mvp, myt5, nemotron, nezha, nllb, nllb-moe, nystromformer, olmo, olmo2, olmoe, omdet-turbo, oneformer, openai-gpt, opt, owlv2, owlvit, paligemma, pegasus, pegasus_x, perceiver, persimmon, phi, phi3, phimoe, phobert, pix2struct, pixtral, plbart, prophetnet, qdqbert, qwen2, qwen2_5_omni, qwen2_5_vl, qwen2_audio, qwen2_moe, qwen2_vl, qwen3, qwen3_moe, rag, realm, recurrent_gemma, reformer, rembert, retribert, roberta, roberta-prelayernorm, roc_bert, roformer, rwkv, seamless_m4t, seamless_m4t_v2, shieldgemma2, siglip, siglip2, smollm3, speech_to_text, speech_to_text_2, speecht5, splinter, squeezebert, stablelm, starcoder2, switch_transformers, t5, t5gemma, tapas, tapex, transfo-xl, tvp, udop, umt5, video_llava, vilt, vipllava, visual_bert, vits, voxtral, wav2vec2, wav2vec2-bert, wav2vec2-conformer, wav2vec2_phoneme, whisper, xclip, xglm, xlm, xlm-prophetnet, xlm-roberta, xlm-roberta-xl, xlnet, xlstm, xmod, yoso, zamba, zamba2.
