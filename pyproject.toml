@@ -1,21 +1,20 @@
 [build-system]
-requires = [
-    "setuptools>=61.0",
-    "wheel",
-]
+requires = [ "setuptools>=61.0", "wheel",]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "huginn"
 version = "0.0.1"
 description = ""
-authors = [
-    { name = "Nichola Walch", email = "littler.compression@gmail.com" }
-]
 readme = "README.md"
-license = { file = "LICENSE" }
 requires-python = ">=3.8"
-dependencies = []
+dependencies = ["accelerate", "hf_xet", "huggingface_hub", "noexcept", "python-dotenv", "torch", "transformers"]
+[[project.authors]]
+name = "Nichola Walch"
+email = "littler.compression@gmail.com"
+
+[project.license]
+file = "LICENSE"
 
 [project.scripts]
-huginn = "huginn.cli:main"
+aiaio = "aiaio.cli:main"

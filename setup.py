@@ -13,12 +13,8 @@ setup(
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     include_package_data=True,
-    install_requires=[],
-    entry_points={
-        "console_scripts": [
-            "huginn=huginn.cli:main"
-        ],
-    },
+    install_requires=["accelerate", "hf_xet", "huggingface_hub", "noexcept", "python-dotenv", "torch", "transformers"],
+    entry_points={"console_scripts": ["aiaio=aiaio.cli:main"]},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

@@ -1,15 +1,18 @@
 import argparse
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-def build_parser(cli_templates):
+def buildParser(cliTemplates):
     parser = argparse.ArgumentParser(prog="test")
-    subparsers = parser.add_subparsers(dest="command", required=True)
-    for tmpl in cli_templates:
-        cmd = tmpl["command"]
-        desc = tmpl.get("description", None)
-        func = tmpl.get("func", None)
-        args = tmpl.get("args", [])
-        sub = subparsers.add_parser(cmd, help=desc)
+    subParsers = parser.add_subparsers(dest="command", required=True)
+    for template in cliTemplates:
+        cmd = template["command"]
+        description = template.get("description", None)
+        func = template.get("func", None)
+        args = template.get("args", [])
+        sub = subParsers.add_parser(cmd, help=description)
         for arg in args:
             flags = arg.get("flags", [])
             kwargs = {k: v for k, v in arg.items() if k not in ("name", "flags")}
@@ -36,7 +39,31 @@ def helpHandler(args):
     else:
         parser.print_help()
 
-cli_templates = [
+def testHandler(args):
+    try:
+        from huginn.aiAssistant import AIAssistant
+
+        assistant = AIAssistant(
+            hfToken=os.getenv("hfToken"),
+            modelID="google/gemma-2b",
+            quantized=False,
+            cache=Path("D:/huggingface")
+        )
+        
+        outputText = assistant.generate("Hello")
+    except Exception as error:
+        print("Test failed:")
+        print(f"    {error}")
+        return
+    
+    print(outputText)
+
+cliTemplates = [
+    {
+        "command": "test",
+        "description": "Create an assistant that says hello.",
+        "func": testHandler,
+    },
     {
         "command": "help",
         "description": "Show help for a command.",
@@ -53,7 +80,7 @@ cli_templates = [
 ]
 
 def main():
-    parser = build_parser(cli_templates)
+    parser = buildParser(cliTemplates)
     args = parser.parse_args()
     # Attach parser for use in help
     setattr(args, "_parser", parser)
