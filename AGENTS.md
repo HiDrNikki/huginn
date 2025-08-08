@@ -1,9 +1,10 @@
 # ./huginn/AGENTS.md
 
+You should also check in ROADMAP.md to get an idea of the scope, scale, and progress of this project.
+
 Always use camel case when writing code for this project.
 
 Never try to install this package, it is over 1.5 GB. Only ever work with the raw code.
-
 
 The project directory has the following structure:
 
@@ -79,4 +80,5 @@ huginn/
 ├─ LICENSE
 ├─ pyproject.toml
 ├─ README.md
+├─ ROADMAP.md
 └─ setup.py
