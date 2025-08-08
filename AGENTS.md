@@ -4,6 +4,28 @@ Always use camel case when writing code for this project.
 
 Never try to install this package, it is over 1.5 GB. Only ever work with the raw code.
 
+
+The project directory has the following structure:
+
+(.venv) PS C:\dev\huginn> pckgr tree
+huginn/
+├─ src/
+│  └─ huginn/
+│     ├─ aiAssistant/
+│     │  ├─ __init__.py
+│     │  ├─ assistant.py
+│     │  └─ systemDiagnostics.py
+│     ├─ __init__.py
+│     ├─ __main__.py
+│     ├─ cli.py
+│     └─ dataTypes.py
+├─ AGENTS.md
+├─ CHANGELOG.md
+├─ LICENSE
+├─ pyproject.toml
+├─ README.md
+└─ setup.py
+
 Address the following from the run:
 
 Since we now support fast AND slow tokenisers, it makes sense to add these as well in their own catagory.
