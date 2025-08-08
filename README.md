@@ -1,0 +1,3 @@
+# huginn
+
+See [pyproject.toml](./pyproject.toml) for details.
